@@ -2,67 +2,71 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Motu Patlu Artist Dashboard</title>
+  <title>Food Restaurant Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Base Styles */
-    body {
+    * {
+      box-sizing: border-box;
       margin: 0;
+      padding: 0;
+    }
+
+    body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #f9f9f9;
-      color: #333;
+      background: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1950&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff;
     }
 
     header {
-      background-color: #ffb400;
-      color: white;
-      padding: 20px 40px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 20px;
       text-align: center;
-      font-size: 28px;
+      font-size: 32px;
       font-weight: bold;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      letter-spacing: 1px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.5);
     }
 
     .container {
-      padding: 40px;
+      padding: 40px 20px;
       display: flex;
       flex-wrap: wrap;
-      gap: 20px;
       justify-content: center;
+      gap: 20px;
     }
 
-    .artist-card {
-      background-color: white;
+    .food-card {
+      background-color: rgba(255, 255, 255, 0.9);
+      color: #333;
+      width: 280px;
       border-radius: 12px;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-      width: 300px;
       overflow: hidden;
-      transition: transform 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
       cursor: pointer;
+      transition: transform 0.2s;
     }
 
-    .artist-card:hover {
-      transform: scale(1.03);
+    .food-card:hover {
+      transform: scale(1.05);
     }
 
-    .artist-card img {
+    .food-card img {
       width: 100%;
-      height: 200px;
+      height: 180px;
       object-fit: cover;
     }
 
-    .artist-info {
-      padding: 20px;
+    .food-info {
+      padding: 15px;
     }
 
-    .artist-info h3 {
-      margin: 0;
-      font-size: 22px;
-      color: #222;
+    .food-info h3 {
+      margin: 0 0 10px;
+      font-size: 20px;
     }
 
-    .artist-info p {
-      margin: 10px 0 0;
+    .food-info p {
       font-size: 14px;
       color: #555;
     }
@@ -72,19 +76,20 @@
       display: none;
       position: fixed;
       z-index: 1000;
-      left: 0; top: 0;
+      top: 0; left: 0;
       width: 100%; height: 100%;
-      background-color: rgba(0,0,0,0.6);
+      background: rgba(0,0,0,0.7);
       justify-content: center;
       align-items: center;
     }
 
     .modal-content {
-      background-color: white;
+      background: #fff;
+      color: #333;
       padding: 30px;
       border-radius: 10px;
-      max-width: 600px;
       width: 90%;
+      max-width: 500px;
       max-height: 80%;
       overflow-y: auto;
       position: relative;
@@ -92,22 +97,17 @@
 
     .close-btn {
       position: absolute;
-      top: 15px;
-      right: 20px;
+      top: 10px;
+      right: 15px;
       font-size: 24px;
       cursor: pointer;
-      color: #555;
-    }
-
-    .collection-item {
-      margin-bottom: 15px;
-    }
-
-    .collection-item h4 {
-      margin: 0;
+      color: #888;
     }
 
     @media (max-width: 768px) {
+      header {
+        font-size: 24px;
+      }
       .container {
         padding: 20px;
       }
@@ -117,94 +117,78 @@
 <body>
 
   <header>
-    Motlu Patlu Artists Dashboard
+    🍽️ Gourmet Bites - Restaurant Dashboard
   </header>
 
-  <div class="container" id="artist-container">
-    <!-- Artist Cards will be inserted here -->
+  <div class="container" id="food-container">
+    <!-- Food cards will be injected here -->
   </div>
 
-  <!-- Modal for Collection -->
-  <div class="modal" id="collection-modal">
+  <!-- Modal -->
+  <div class="modal" id="food-modal">
     <div class="modal-content">
       <span class="close-btn" id="close-modal">&times;</span>
-      <h2 id="modal-artist-name"></h2>
-      <div id="collection-list"></div>
+      <h2 id="modal-food-name"></h2>
+      <p id="modal-food-desc"></p>
     </div>
   </div>
 
   <script>
-    const artists = [
+    const foodItems = [
       {
-        name: "Ravi Sharma",
-        image: "https://i.imgur.com/f1QyD5s.jpg",
-        description: "Traditional Motlu Patlu illustrations with Indian village flair.",
-        collection: [
-          { title: "Motu in Punjab", description: "Colorful rural scene of Motu." },
-          { title: "Patlu’s Rickshaw Ride", description: "Dynamic sketch of Patlu zooming past." },
-          { title: "Laddoo Love", description: "Motu dreaming of laddoos in watercolor." }
-        ]
+        name: "Spicy Chicken Biryani",
+        image: "https://images.unsplash.com/photo-1608759265649-9c5b8e405bb2?auto=format&fit=crop&w=800&q=80",
+        description: "Aromatic basmati rice cooked with tender chicken, spices, and herbs. Served with raita."
       },
       {
-        name: "Anjali Verma",
-        image: "https://i.imgur.com/V9y6YtE.jpg",
-        description: "Modern, digital Motlu Patlu artworks with 3D effects.",
-        collection: [
-          { title: "Neon Motu", description: "Motu in glowing futuristic style." },
-          { title: "Robot Patlu", description: "Sci-fi themed Patlu sketch." },
-          { title: "Motu vs Aliens", description: "Full battle art scene." }
-        ]
+        name: "Margherita Pizza",
+        image: "https://images.unsplash.com/photo-1601924582975-4aa3b6c52e17?auto=format&fit=crop&w=800&q=80",
+        description: "Classic Italian pizza with fresh tomatoes, mozzarella, and basil leaves on a thin crust."
       },
       {
-        name: "Suresh Kumar",
-        image: "https://i.imgur.com/8p0vY6Y.jpg",
-        description: "Comic-style art with exaggerated expressions and action.",
-        collection: [
-          { title: "Chai Time Chaos", description: "Motu spilling chai in comic panel." },
-          { title: "Dr. Jhatka’s Lab", description: "Scene inside crazy lab." },
-          { title: "Police Panic", description: "Motu running from Inspector." }
-        ]
+        name: "Grilled Paneer Tikka",
+        image: "https://images.unsplash.com/photo-1607082350920-f54e5b84f70c?auto=format&fit=crop&w=800&q=80",
+        description: "Chunks of cottage cheese marinated in spices and grilled to perfection. Served with mint chutney."
+      },
+      {
+        name: "Butter Chicken",
+        image: "https://images.unsplash.com/photo-1631515243340-3a5a240fa9d9?auto=format&fit=crop&w=800&q=80",
+        description: "Creamy tomato-based curry with tender chicken pieces. Best enjoyed with naan or rice."
+      },
+      {
+        name: "Veggie Spring Rolls",
+        image: "https://images.unsplash.com/photo-1628581865170-2c2021dbfcfa?auto=format&fit=crop&w=800&q=80",
+        description: "Crispy spring rolls filled with seasoned vegetables. Served with sweet chili sauce."
       }
     ];
 
-    const container = document.getElementById("artist-container");
-    const modal = document.getElementById("collection-modal");
+    const container = document.getElementById("food-container");
+    const modal = document.getElementById("food-modal");
+    const modalName = document.getElementById("modal-food-name");
+    const modalDesc = document.getElementById("modal-food-desc");
     const closeModal = document.getElementById("close-modal");
-    const modalName = document.getElementById("modal-artist-name");
-    const collectionList = document.getElementById("collection-list");
 
-    function createArtistCard(artist, index) {
+    function createFoodCard(item) {
       const card = document.createElement("div");
-      card.className = "artist-card";
+      card.className = "food-card";
       card.innerHTML = `
-        <img src="${artist.image}" alt="${artist.name}">
-        <div class="artist-info">
-          <h3>${artist.name}</h3>
-          <p>${artist.description}</p>
+        <img src="${item.image}" alt="${item.name}">
+        <div class="food-info">
+          <h3>${item.name}</h3>
+          <p>${item.description.substring(0, 60)}...</p>
         </div>
       `;
-      card.addEventListener("click", () => showCollection(index));
+      card.addEventListener("click", () => showModal(item));
       container.appendChild(card);
     }
 
-    function showCollection(index) {
-      const artist = artists[index];
-      modalName.textContent = artist.name + "'s Collection";
-      collectionList.innerHTML = "";
-
-      artist.collection.forEach(item => {
-        const div = document.createElement("div");
-        div.className = "collection-item";
-        div.innerHTML = `<h4>${item.title}</h4><p>${item.description}</p>`;
-        collectionList.appendChild(div);
-      });
-
+    function showModal(item) {
+      modalName.textContent = item.name;
+      modalDesc.textContent = item.description;
       modal.style.display = "flex";
     }
 
-    closeModal.onclick = () => {
-      modal.style.display = "none";
-    };
+    closeModal.onclick = () => modal.style.display = "none";
 
     window.onclick = (e) => {
       if (e.target === modal) {
@@ -212,8 +196,8 @@
       }
     };
 
-    // Init
-    artists.forEach((artist, index) => createArtistCard(artist, index));
+    // Initialize cards
+    foodItems.forEach(item => createFoodCard(item));
   </script>
 </body>
 </html>
