@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Motu Patlu Artist Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #f9f9f9;
+      color: #333;
+    }
+
+    header {
+      background-color: #ffb400;
+      color: white;
+      padding: 20px 40px;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .container {
+      padding: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: center;
+    }
+
+    .artist-card {
+      background-color: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      width: 300px;
+      overflow: hidden;
+      transition: transform 0.2s;
+      cursor: pointer;
+    }
+
+    .artist-card:hover {
+      transform: scale(1.03);
+    }
+
+    .artist-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .artist-info {
+      padding: 20px;
+    }
+
+    .artist-info h3 {
+      margin: 0;
+      font-size: 22px;
+      color: #222;
+    }
+
+    .artist-info p {
+      margin: 10px 0 0;
+      font-size: 14px;
+      color: #555;
+    }
+
+    /* Modal Styles */
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0; top: 0;
+      width: 100%; height: 100%;
+      background-color: rgba(0,0,0,0.6);
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: white;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 600px;
+      width: 90%;
+      max-height: 80%;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      font-size: 24px;
+      cursor: pointer;
+      color: #555;
+    }
+
+    .collection-item {
+      margin-bottom: 15px;
+    }
+
+    .collection-item h4 {
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    Motlu Patlu Artists Dashboard
+  </header>
+
+  <div class="container" id="artist-container">
+    <!-- Artist Cards will be inserted here -->
+  </div>
+
+  <!-- Modal for Collection -->
+  <div class="modal" id="collection-modal">
+    <div class="modal-content">
+      <span class="close-btn" id="close-modal">&times;</span>
+      <h2 id="modal-artist-name"></h2>
+      <div id="collection-list"></div>
+    </div>
+  </div>
+
+  <script>
+    const artists = [
+      {
+        name: "Ravi Sharma",
+        image: "https://i.imgur.com/f1QyD5s.jpg",
+        description: "Traditional Motlu Patlu illustrations with Indian village flair.",
+        collection: [
+          { title: "Motu in Punjab", description: "Colorful rural scene of Motu." },
+          { title: "Patlu’s Rickshaw Ride", description: "Dynamic sketch of Patlu zooming past." },
+          { title: "Laddoo Love", description: "Motu dreaming of laddoos in watercolor." }
+        ]
+      },
+      {
+        name: "Anjali Verma",
+        image: "https://i.imgur.com/V9y6YtE.jpg",
+        description: "Modern, digital Motlu Patlu artworks with 3D effects.",
+        collection: [
+          { title: "Neon Motu", description: "Motu in glowing futuristic style." },
+          { title: "Robot Patlu", description: "Sci-fi themed Patlu sketch." },
+          { title: "Motu vs Aliens", description: "Full battle art scene." }
+        ]
+      },
+      {
+        name: "Suresh Kumar",
+        image: "https://i.imgur.com/8p0vY6Y.jpg",
+        description: "Comic-style art with exaggerated expressions and action.",
+        collection: [
+          { title: "Chai Time Chaos", description: "Motu spilling chai in comic panel." },
+          { title: "Dr. Jhatka’s Lab", description: "Scene inside crazy lab." },
+          { title: "Police Panic", description: "Motu running from Inspector." }
+        ]
+      }
+    ];
+
+    const container = document.getElementById("artist-container");
+    const modal = document.getElementById("collection-modal");
+    const closeModal = document.getElementById("close-modal");
+    const modalName = document.getElementById("modal-artist-name");
+    const collectionList = document.getElementById("collection-list");
+
+    function createArtistCard(artist, index) {
+      const card = document.createElement("div");
+      card.className = "artist-card";
+      card.innerHTML = `
+        <img src="${artist.image}" alt="${artist.name}">
+        <div class="artist-info">
+          <h3>${artist.name}</h3>
+          <p>${artist.description}</p>
+        </div>
+      `;
+      card.addEventListener("click", () => showCollection(index));
+      container.appendChild(card);
+    }
+
+    function showCollection(index) {
+      const artist = artists[index];
+      modalName.textContent = artist.name + "'s Collection";
+      collectionList.innerHTML = "";
+
+      artist.collection.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "collection-item";
+        div.innerHTML = `<h4>${item.title}</h4><p>${item.description}</p>`;
+        collectionList.appendChild(div);
+      });
+
+      modal.style.display = "flex";
+    }
+
+    closeModal.onclick = () => {
+      modal.style.display = "none";
+    };
+
+    window.onclick = (e) => {
+      if (e.target === modal) {
+        modal.style.display = "none";
+      }
+    };
+
+    // Init
+    artists.forEach((artist, index) => createArtistCard(artist, index));
+  </script>
+</body>
+</html>
