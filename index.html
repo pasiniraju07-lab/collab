@@ -45,62 +45,20 @@
     .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0a0d14;font-weight:700;border:none;cursor:pointer;box-shadow:var(--glow);}
     .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.1);box-shadow:none}
 
-    /* Hero */
-    .hero{max-width:1200px;margin:0 auto;padding:64px 20px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-    .hero .kicker{color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.2em}
-    .hero h1{font-size: clamp(34px, 6vw, 62px); line-height:1.1;margin:.2em 0;background:linear-gradient(90deg,#fff, #c8e9ff 40%, #cbb7ff 80%);-webkit-background-clip:text;color:transparent}
-    .hero p{color:var(--muted);font-size:18px}
-    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .hero-card{background:var(--glass);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:var(--radius);display:flex;gap:14px;align-items:center}
-    .stat{display:grid}
-    .stat .num{font-size:22px;font-weight:800}
-    .stat .lab{font-size:12px;color:var(--muted)}
-
-    /* 3D Laptop (pure CSS) */
-    .stage{position:relative; height:520px; perspective:1100px;}
-    .laptop3d{
-      position:absolute;left:50%;top:50%;transform-style:preserve-3d;
-      transform: translate(-50%, -50%) rotateX(8deg) rotateY(-24deg);
-      animation: orbit 18s linear infinite;
-    }
-    @keyframes orbit{
-      0%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(-24deg)}
-      50%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(156deg)}
-      100%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(336deg)}
-    }
-    .base{width:520px;height:18px;background:linear-gradient(180deg,#1a2337,#0b0f17);border-radius:10px;transform:translateZ(0);
-      box-shadow: 0 60px 70px rgba(0,0,0,.45);
-    }
-    .keyboard{position:absolute;left:50%;top:-210px;transform:translate(-50%,0) rotateX(90deg);transform-origin:50% 100%; width:520px;height:340px;background:linear-gradient(180deg,#0f1626,#0b0f17);border-radius:12px;border:1px solid rgba(255,255,255,.06);}
-    .keys{position:absolute;inset:26px 26px 80px 26px;display:grid;grid-template-columns: repeat(14, 1fr);gap:8px}
-    .key{height:18px;background:linear-gradient(180deg,#152033,#0b1120);border-radius:4px;border:1px solid rgba(255,255,255,.08)}
-    .touchpad{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:160px;height:90px;border-radius:10px;background:linear-gradient(180deg,#121a2c,#0b0f17);border:1px solid rgba(255,255,255,.08)}
-
-    .lid{position:absolute;left:50%;bottom:340px;transform:translateX(-50%) rotateX(90deg);transform-origin:50% 100%; width:520px;height:320px;background:#06080e;border-radius:14px;border:1px solid rgba(255,255,255,.12);}
-    .screen{position:absolute;inset:12px;border-radius:10px;background:radial-gradient(140% 120% at 0% 0%, #021a2a, #0d0830 60%, #020409 100%);
-      overflow:hidden;}
-    .screen::after{content:""; position:absolute; inset:-10% -10% auto auto; width:70%; height:140%; background: linear-gradient(120deg, rgba(255,255,255,.18), transparent 60%);
-      transform: rotate(8deg); filter: blur(2px);
-    }
-    .bezel{position:absolute;inset:0;border-radius:10px;box-shadow: inset 0 0 0 12px #0008;
-      outline:1px solid rgba(255,255,255,.06)}
-    .screen-ui{position:absolute; inset:0; display:grid; place-items:center;}
-    .screen-ui .logo{font-size:22px; color:#b3f2ff; text-shadow:0 0 10px rgba(102,227,255,.6)}
-
-    /* Sections */
     section{max-width:1200px; margin:0 auto; padding:70px 20px}
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
-    .grid.cols-4{grid-template-columns:repeat(4, 1fr)}
+
+    /* Pages */
+    .page{display:none}
+    .page.active{display:block}
+    .page h2{margin-top:0}
+    .page .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
 
     /* Gallery */
     .gallery{display:grid;grid-template-columns:2fr 1fr 1fr; gap:14px}
     .gallery img{width:100%; height:100%; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.08)}
     .tall{grid-row: span 2}
 
-    /* Products */
+    /* Shop */
     .product{display:grid;gap:10px}
     .product .badge{font-size:12px; color:#0a0d14; background:linear-gradient(135deg,var(--brand),var(--accent)); display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700}
     .product h4{margin:6px 0 2px}
@@ -108,41 +66,11 @@
     .strike{color:var(--muted); text-decoration:line-through; font-weight:600; margin-left:6px}
     .specs{display:flex; flex-wrap:wrap; gap:8px; color:var(--muted); font-size:13px}
 
-    /* Comparison table */
-    table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,.08);}
-    th,td{padding:14px 16px; text-align:left;}
-    thead th{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));}
-    tbody tr:nth-child(odd) td{background:rgba(255,255,255,.03)}
-
-    /* Testimonials */
-    .quote{position:relative; padding-left:16px}
-    .quote::before{content:"\201C"; position:absolute; left:-4px; top:-10px; font-size:48px; color:var(--brand); opacity:.6}
-
-    /* CTA band */
-    .band{background: radial-gradient(50% 100% at 50% 0%, rgba(102,227,255,.15), rgba(154,107,255,.10) 40%, transparent 70%), 
-           linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);
-    }
-
-    /* Footer */
     footer{padding:40px 20px; color:var(--muted); text-align:center}
 
-    /* Badges */
-    .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted); font-size:12px}
-
-    /* Responsive */
-    @media (max-width:1024px){
-      .hero{grid-template-columns:1fr;}
-      .stage{height:440px}
-      .base{width:420px}
-      .keyboard{width:420px;height:300px}
-      .lid{width:420px;height:260px}
-    }
     @media (max-width:720px){
       .navlinks{display:none}
       .gallery{grid-template-columns:1fr 1fr}
-      .grid.cols-3{grid-template-columns:1fr}
-      .grid.cols-4{grid-template-columns:1fr 1fr}
     }
   </style>
 </head>
@@ -151,380 +79,102 @@
     <nav>
       <div class="logo">Nova<b>Laptops</b></div>
       <div class="navlinks">
-        <a href="#gallery">Gallery</a>
-        <a href="#products">Products</a>
-        <a href="#compare">Compare</a>
-        <a href="#contact">Contact</a>
-        <a href="#model">3D Model</a>
+        <a href="#" onclick="showPage('home')">Home</a>
+        <a href="#" onclick="showPage('gallery')">Gallery</a>
+        <a href="#" onclick="showPage('shop')">Shop</a>
+        <a href="#" onclick="showPage('contact')">Contact</a>
       </div>
-      <button class="btn">Shop Now</button>
+      <button class="btn" onclick="showPage('shop')">Shop Now</button>
     </nav>
   </header>
 
-  <section class="hero">
-    <div>
-      <div class="kicker">Fall 2025 Collection</div>
-      <h1>Power meets design. Laptops that keep up with your ideas.</h1>
-      <p>From featherweight ultrabooks to liquid‑cooled gaming rigs, NovaLaptops delivers premium performance wrapped in elegant craftsmanship. Free shipping. 14‑day returns. 2‑year warranty.</p>
-      <div class="hero-cta">
-        <button class="btn">Build & Buy</button>
-        <a class="btn ghost" href="#compare">Compare Models</a>
-        <div class="hero-card">
-          <div class="stat"><span class="num">12+ hrs</span><span class="lab">Real battery life</span></div>
-          <div class="stat"><span class="num"><span style="color:var(--good)">✔</span> 2 yrs</span><span class="lab">Premium warranty</span></div>
-          <div class="stat"><span class="num">1.1kg</span><span class="lab">Travel‑light build</span></div>
-        </div>
-      </div>
-    </div>
-    <div id="model" class="stage" aria-label="3D laptop model">
-      <div class="laptop3d">
-        <div class="base"></div>
-        <div class="keyboard">
-          <div class="keys">
-            <!-- 14 x 5 rows of keys -->
-            <script>
-              // Generate lots of keys without external assets
-              const rows = 5, cols = 14; 
-              document.currentScript.insertAdjacentHTML('afterend',
-                Array.from({length:rows*cols}).map(()=>'<div class="key"></div>').join('')
-              );
-            </script>
-          </div>
-          <div class="touchpad"></div>
-        </div>
-        <div class="lid">
-          <div class="screen">
-            <div class="screen-ui">
-              <div class="logo">Nova<b>Laptops</b></div>
-            </div>
-            <div class="bezel"></div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <!-- Home Page -->
+  <section id="home" class="page active">
+    <h2>Welcome to NovaLaptops</h2>
+    <p>Discover our premium laptops engineered for power and elegance. Scroll through our gallery or head straight to the shop to find your perfect match.</p>
   </section>
 
-  <section id="gallery">
-    <h2>Explore by Use‑Case</h2>
-    <p class="muted">Different types of laptops for every creator and traveler. A mix of lifestyle, product and macro detail imagery.</p>
-    <div class="gallery" aria-label="Laptop image gallery">
-      <img class="tall" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop" alt="Developer coding on a powerful laptop"/>
-      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Ultrabook on a minimalist desk"/>
+  <!-- Gallery Page -->
+  <section id="gallery" class="page">
+    <h2>Gallery</h2>
+    <p>See how our laptops fit into every lifestyle — from gaming and business to creativity and travel.</p>
+    <div class="gallery">
+      <img class="tall" src="https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=1600&auto=format&fit=crop" alt="Developer coding on a laptop"/>
+      <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop" alt="Laptop on a desk"/>
       <img src="https://images.unsplash.com/photo-1515378791036-0648a3ef77b2?q=80&w=1200&auto=format&fit=crop" alt="Gaming laptop with RGB keyboard"/>
       <img src="https://images.unsplash.com/photo-1507209696998-3c532be9b2b3?q=80&w=1600&auto=format&fit=crop" alt="Business laptop at a cafe"/>
-      <img src="https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?q=80&w=1200&auto=format&fit=crop" alt="2‑in‑1 convertible in tablet mode"/>
+      <img src="https://images.unsplash.com/photo-1457305237443-44c3d5a30b89?q=80&w=1200&auto=format&fit=crop" alt="Convertible laptop"/>
     </div>
   </section>
 
-  <section id="products">
-    <h2>Featured Laptops</h2>
-    <div class="grid cols-3">
+  <!-- Shop Page -->
+  <section id="shop" class="page">
+    <h2>Shop Now</h2>
+    <div style="display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr))">
       <div class="card product">
         <span class="badge">Ultrabook</span>
-        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover; border:1px solid rgba(255,255,255,.08)" src="https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=1600&auto=format&fit=crop" alt="Ultrabook"/>
+        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover;" src="https://images.unsplash.com/photo-1486718448742-163732cd1544?q=80&w=1600&auto=format&fit=crop" alt="Ultrabook"/>
         <h4>Nova Air 13</h4>
         <div class="specs">
-          <span class="pill">13.3" OLED</span>
-          <span class="pill">Intel® Core™ Ultra</span>
-          <span class="pill">16GB / 1TB</span>
-          <span class="pill">1.1 kg</span>
+          <span>13.3" OLED</span>
+          <span>Intel® Core™ Ultra</span>
+          <span>16GB / 1TB</span>
         </div>
-        <div>
-          <span class="price">$1,099</span>
-          <span class="strike">$1,299</span>
-        </div>
-        <button class="btn" style="width:max-content">Add to Cart</button>
+        <div><span class="price">$1,099</span> <span class="strike">$1,299</span></div>
+        <button class="btn">Add to Cart</button>
       </div>
-
       <div class="card product">
         <span class="badge">Creator</span>
-        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover; border:1px solid rgba(255,255,255,.08)" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop" alt="Creator laptop"/>
+        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover;" src="https://images.unsplash.com/photo-1509395176047-4a66953fd231?q=80&w=1600&auto=format&fit=crop" alt="Creator laptop"/>
         <h4>Nova Pro 16</h4>
         <div class="specs">
-          <span class="pill">16" Mini‑LED 165Hz</span>
-          <span class="pill">NVIDIA® RTX™</span>
-          <span class="pill">32GB / 2TB</span>
-          <span class="pill">Thunderbolt 4</span>
+          <span>16" Mini‑LED</span>
+          <span>NVIDIA® RTX™</span>
+          <span>32GB / 2TB</span>
         </div>
-        <div>
-          <span class="price">$1,899</span>
-          <span class="strike">$2,099</span>
-        </div>
-        <button class="btn" style="width:max-content">Add to Cart</button>
+        <div><span class="price">$1,899</span> <span class="strike">$2,099</span></div>
+        <button class="btn">Add to Cart</button>
       </div>
-
       <div class="card product">
         <span class="badge">Gaming</span>
-        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover; border:1px solid rgba(255,255,255,.08)" src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1600&auto=format&fit=crop" alt="Gaming laptop"/>
+        <img style="border-radius:14px; width:100%; height:220px; object-fit:cover;" src="https://images.unsplash.com/photo-1512428559087-560fa5ceab42?q=80&w=1600&auto=format&fit=crop" alt="Gaming laptop"/>
         <h4>Nova Pulse 17</h4>
         <div class="specs">
-          <span class="pill">17" QHD 240Hz</span>
-          <span class="pill">RTX™ 4080</span>
-          <span class="pill">64GB / 4TB</span>
-          <span class="pill">Liquid cooling</span>
+          <span>17" QHD 240Hz</span>
+          <span>RTX™ 4080</span>
+          <span>64GB / 4TB</span>
         </div>
-        <div>
-          <span class="price">$2,699</span>
-          <span class="strike">$2,999</span>
-        </div>
-        <button class="btn" style="width:max-content">Add to Cart</button>
+        <div><span class="price">$2,699</span> <span class="strike">$2,999</span></div>
+        <button class="btn">Add to Cart</button>
       </div>
     </div>
   </section>
 
-  <section class="band" id="compare">
-    <section style="max-width:1200px; margin:0 auto; padding:60px 20px">
-      <h2>Compare at a Glance</h2>
-      <table aria-label="Comparison table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Display</th>
-            <th>CPU</th>
-            <th>GPU</th>
-            <th>Weight</th>
-            <th>Battery</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Nova Air 13</td>
-            <td>13.3" OLED</td>
-            <td>Core Ultra 7</td>
-            <td>Integrated</td>
-            <td>1.1 kg</td>
-            <td>12 hrs</td>
-          </tr>
-          <tr>
-            <td>Nova Pro 16</td>
-            <td>16" Mini‑LED 165Hz</td>
-            <td>Core Ultra 9</td>
-            <td>RTX 4070</td>
-            <td>1.9 kg</td>
-            <td>10 hrs</td>
-          </tr>
-          <tr>
-            <td>Nova Pulse 17</td>
-            <td>17" QHD 240Hz</td>
-            <td>Ryzen 9</td>
-            <td>RTX 4080</td>
-            <td>2.6 kg</td>
-            <td>8 hrs</td>
-          </tr>
-        </tbody>
-      </table>
-      <div style="display:flex; gap:12px; margin-top:18px; flex-wrap:wrap">
-        <span class="pill">Free upgrade: Windows 11 Pro</span>
-        <span class="pill">AI Studio pre‑installed</span>
-        <span class="pill">Carbon‑neutral shipping</span>
-      </div>
-    </section>
-  </section>
-
-  <section>
-    <h2>Why NovaLaptops?</h2>
-    <div class="grid cols-3">
-      <div class="card">
-        <h3>Crafted for performance</h3>
-        <p>We iterate with thermal simulations and aerospace‑grade materials to balance power and comfort. Expect whisper‑quiet fans and cool palm rests under full load.</p>
-      </div>
-      <div class="card">
-        <h3>Battery that actually lasts</h3>
-        <p>Real‑world battery numbers with adaptive tuning. Charge from 0–50% in 30 minutes with our GaN fast charger.</p>
-      </div>
-      <div class="card">
-        <h3>Service that delights</h3>
-        <p>2‑year premium warranty with pick‑up & return. Global parts availability and DIY‑friendly design.</p>
-      </div>
-    </div>
-  </section>
-
-  <section>
-    <h2>What creators say</h2>
-    <div class="grid cols-3">
-      <div class="card quote">The Nova Pro 16 renders my 4K timelines in half the time. The screen is chef's kiss.</div>
-      <div class="card quote">I travel weekly; the Air 13 finally gives me a full day of work with no anxiety.</div>
-      <div class="card quote">RTX Studio drivers plus quiet cooling — my Blender scenes fly.</div>
-    </div>
-  </section>
-
-  <section id="contact">
-    <h2>Talk to a specialist</h2>
-    <div class="grid cols-2">
-      <form class="card" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Our team will reach out shortly.');">
-        <label>Name<br><input required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="Your name"/></label>
-        <br>
-        <label>Email<br><input type="email" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="you@example.com"/></label>
-        <br>
-        <label>How can we help?<br>
-          <textarea required rows="5" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="Tell us about your ideal laptop..."></textarea>
-        </label>
-        <br>
-        <button class="btn">Request a Callback</button>
-      </form>
-      <div class="card">
-        <h3>Need bulk pricing?</h3>
-        <p>We outfit teams from 5 to 500 with centralized billing, asset tagging, and white‑glove deployment.</p>
-        <ul>
-          <li>Volume discounts up to 18%</li>
-          <li>Dedicated account manager</li>
-          <li>Zero‑touch provisioning</li>
-        </ul>
-        <p><b>Email:</b> sales@novalaptops.example</p>
-      </div>
-    </div>
+  <!-- Contact Page -->
+  <section id="contact" class="page">
+    <h2>Contact Us</h2>
+    <form class="card" onsubmit="event.preventDefault(); this.reset(); alert('Thanks! Our team will reach out shortly.');">
+      <label>Name<br><input required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="Your name"/></label>
+      <br>
+      <label>Email<br><input type="email" required style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="you@example.com"/></label>
+      <br>
+      <label>Message<br>
+        <textarea required rows="5" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(255,255,255,.15); background:#0c131f; color:var(--ink)" placeholder="Tell us what you need..."></textarea>
+      </label>
+      <br>
+      <button class="btn">Send Message</button>
+    </form>
   </section>
 
   <footer>
     © 2025 NovaLaptops · <a href="#">Privacy</a> · <a href="#">Terms</a>
   </footer>
+
+  <script>
+    function showPage(id){
+      document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+      document.getElementById(id).classList.add('active');
+    }
+  </script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NovaLaptops — Power Meets Design</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#0b0f17;
-      --bg-soft:#0f1626;
-      --ink:#e9f2ff;
-      --muted:#9fb6d1;
-      --brand:#66e3ff;
-      --accent:#9a6bff;
-      --good:#40d66e;
-      --warn:#ffb647;
-      --danger:#ff5c7c;
-      --card: rgba(255,255,255,.05);
-      --glass: rgba(255,255,255,.08);
-      --glow: 0 0 30px rgba(102,227,255,.35), 0 0 60px rgba(154,107,255,.25);
-      --radius: 18px;
-    }
-    *{box-sizing:border-box}
-    html,body{margin:0;height:100%;}
-    body{
-      font-family:"Poppins",system-ui,Segoe UI,Roboto,Arial; 
-      background: radial-gradient(1200px 600px at 10% -10%, #12203b 0%, transparent 60%),
-                  radial-gradient(1200px 800px at 120% 20%, #1e1440 0%, transparent 65%),
-                  linear-gradient(180deg, #090d14 0%, #0c1019 60%, #0b0f17 100%);
-      color: var(--ink);
-      line-height:1.6;
-      scroll-behavior: smooth;
-    }
-    a{color:var(--brand);text-decoration:none}
-    header{
-      position:sticky; top:0; z-index:1000; backdrop-filter: blur(10px);
-      background: linear-gradient(180deg, rgba(15,22,38,.9), rgba(15,22,38,.6));
-      border-bottom:1px solid rgba(255,255,255,.06);
-    }
-    nav{max-width:1200px;margin:auto;display:flex;align-items:center;gap:20px;padding:14px 20px}
-    .logo{font-weight:800;letter-spacing:.5px}
-    .logo b{color:var(--brand)}
-    .navlinks{margin-left:auto;display:flex;gap:18px}
-    .btn{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:12px;background:linear-gradient(135deg,var(--brand),var(--accent));color:#0a0d14;font-weight:700;border:none;cursor:pointer;box-shadow:var(--glow);}
-    .btn.ghost{background:transparent;color:var(--ink);border:1px solid rgba(255,255,255,.1);box-shadow:none}
-
-    /* Hero */
-    .hero{max-width:1200px;margin:0 auto;padding:64px 20px 40px;display:grid;grid-template-columns:1.2fr .8fr;gap:36px;align-items:center}
-    .hero .kicker{color:var(--muted);text-transform:uppercase;font-weight:600;letter-spacing:.2em}
-    .hero h1{font-size: clamp(34px, 6vw, 62px); line-height:1.1;margin:.2em 0;background:linear-gradient(90deg,#fff, #c8e9ff 40%, #cbb7ff 80%);-webkit-background-clip:text;color:transparent}
-    .hero p{color:var(--muted);font-size:18px}
-    .hero-cta{display:flex;gap:12px;margin-top:18px;flex-wrap:wrap}
-    .hero-card{background:var(--glass);border:1px solid rgba(255,255,255,.08);padding:16px;border-radius:var(--radius);display:flex;gap:14px;align-items:center}
-    .stat{display:grid}
-    .stat .num{font-size:22px;font-weight:800}
-    .stat .lab{font-size:12px;color:var(--muted)}
-
-    /* 3D Laptop (pure CSS) */
-    .stage{position:relative; height:520px; perspective:1100px;}
-    .laptop3d{
-      position:absolute;left:50%;top:50%;transform-style:preserve-3d;
-      transform: translate(-50%, -50%) rotateX(8deg) rotateY(-24deg);
-      animation: orbit 18s linear infinite;
-    }
-    @keyframes orbit{
-      0%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(-24deg)}
-      50%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(156deg)}
-      100%{transform: translate(-50%, -50%) rotateX(8deg) rotateY(336deg)}
-    }
-    .base{width:520px;height:18px;background:linear-gradient(180deg,#1a2337,#0b0f17);border-radius:10px;transform:translateZ(0);
-      box-shadow: 0 60px 70px rgba(0,0,0,.45);
-    }
-    .keyboard{position:absolute;left:50%;top:-210px;transform:translate(-50%,0) rotateX(90deg);transform-origin:50% 100%; width:520px;height:340px;background:linear-gradient(180deg,#0f1626,#0b0f17);border-radius:12px;border:1px solid rgba(255,255,255,.06);}
-    .keys{position:absolute;inset:26px 26px 80px 26px;display:grid;grid-template-columns: repeat(14, 1fr);gap:8px}
-    .key{height:18px;background:linear-gradient(180deg,#152033,#0b1120);border-radius:4px;border:1px solid rgba(255,255,255,.08)}
-    .touchpad{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);width:160px;height:90px;border-radius:10px;background:linear-gradient(180deg,#121a2c,#0b0f17);border:1px solid rgba(255,255,255,.08)}
-
-    .lid{position:absolute;left:50%;bottom:340px;transform:translateX(-50%) rotateX(90deg);transform-origin:50% 100%; width:520px;height:320px;background:#06080e;border-radius:14px;border:1px solid rgba(255,255,255,.12);}
-    .screen{position:absolute;inset:12px;border-radius:10px;background:radial-gradient(140% 120% at 0% 0%, #021a2a, #0d0830 60%, #020409 100%);
-      overflow:hidden;}
-    .screen::after{content:""; position:absolute; inset:-10% -10% auto auto; width:70%; height:140%; background: linear-gradient(120deg, rgba(255,255,255,.18), transparent 60%);
-      transform: rotate(8deg); filter: blur(2px);
-    }
-    .bezel{position:absolute;inset:0;border-radius:10px;box-shadow: inset 0 0 0 12px #0008;
-      outline:1px solid rgba(255,255,255,.06)}
-    .screen-ui{position:absolute; inset:0; display:grid; place-items:center;}
-    .screen-ui .logo{font-size:22px; color:#b3f2ff; text-shadow:0 0 10px rgba(102,227,255,.6)}
-
-    /* Sections */
-    section{max-width:1200px; margin:0 auto; padding:70px 20px}
-    .card{background:var(--card); border:1px solid rgba(255,255,255,.08); border-radius:var(--radius); padding:22px}
-    .grid{display:grid; gap:18px}
-    .grid.cols-3{grid-template-columns:repeat(3, 1fr)}
-    .grid.cols-2{grid-template-columns:repeat(2, 1fr)}
-    .grid.cols-4{grid-template-columns:repeat(4, 1fr)}
-
-    /* Gallery */
-    .gallery{display:grid;grid-template-columns:2fr 1fr 1fr; gap:14px}
-    .gallery img{width:100%; height:100%; object-fit:cover; border-radius:16px; border:1px solid rgba(255,255,255,.08)}
-    .tall{grid-row: span 2}
-
-    /* Products */
-    .product{display:grid;gap:10px}
-    .product .badge{font-size:12px; color:#0a0d14; background:linear-gradient(135deg,var(--brand),var(--accent)); display:inline-block; padding:6px 10px; border-radius:999px; font-weight:700}
-    .product h4{margin:6px 0 2px}
-    .price{font-weight:800; font-size:22px}
-    .strike{color:var(--muted); text-decoration:line-through; font-weight:600; margin-left:6px}
-    .specs{display:flex; flex-wrap:wrap; gap:8px; color:var(--muted); font-size:13px}
-
-    /* Comparison table */
-    table{width:100%; border-collapse:separate; border-spacing:0; overflow:hidden; border-radius:14px; border:1px solid rgba(255,255,255,.08);}
-    th,td{padding:14px 16px; text-align:left;}
-    thead th{background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,0));}
-    tbody tr:nth-child(odd) td{background:rgba(255,255,255,.03)}
-
-    /* Testimonials */
-    .quote{position:relative; padding-left:16px}
-    .quote::before{content:"\201C"; position:absolute; left:-4px; top:-10px; font-size:48px; color:var(--brand); opacity:.6}
-
-    /* CTA band */
-    .band{background: radial-gradient(50% 100% at 50% 0%, rgba(102,227,255,.15), rgba(154,107,255,.10) 40%, transparent 70%), 
-           linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
-      border-top:1px solid rgba(255,255,255,.08); border-bottom:1px solid rgba(255,255,255,.08);
-    }
-
-    /* Footer */
-    footer{padding:40px 20px; color:var(--muted); text-align:center}
-
-    /* Badges */
-    .pill{display:inline-block; padding:6px 10px; border-radius:999px; border:1px solid rgba(255,255,255,.12); color:var(--muted); font-size:12px}
-
-    /* Responsive */
-    @media (max-width:1024px){
-      .hero{grid-template-columns:1fr;}
-      .stage{height:440px}
-      .base{width:420px}
-      .keyboard{width:420px;height:300px}
-      .lid{width:420px;height:260px}
-    }
-    @media (max-width:720px){
-      .navlinks{display:none}
-      .gallery{grid-template-columns:1fr 1fr}
-      .grid.cols-3{grid-template-columns:1fr}
-      .grid.cols-4{grid-template-columns:1fr 1fr}
-    }
-  </style>
-</head>
